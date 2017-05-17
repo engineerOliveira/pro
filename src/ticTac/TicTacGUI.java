@@ -1,3 +1,5 @@
+//This program creates a game of TIC-TAC-TOE 
+
 package ticTac;
 
 import java.awt.GridLayout;
@@ -32,7 +34,7 @@ public class TicTacGUI extends JFrame {
 
 		setVisible(true);
 	}
-
+//action listener used to determine which button has been selected
 	private class determineButton implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			for (int i = 0; i <= 8; i++) {
@@ -45,23 +47,24 @@ public class TicTacGUI extends JFrame {
 
 		}
 	}
-
+//method used to switch from player 'X' and player'O'
 	private void determineXorO(JButton b) {
 		if (turn % 2 == 0) {
 			b.setText("X");
 			b.setEnabled(false);
-			checkWinner("X");
+			checkWinner();
 			turn++;
 		} else {
 			b.setText("O");
 			b.setEnabled(false);
-			checkWinner("O");
+			checkWinner();
 			turn++;
 		}
 
 	}
 
-	private void checkWinner(String y) {
+	//checks every possiblity to determine if a player has won.
+	private void checkWinner() {
 		String b1 = buttons[0].getText();
 		String b2 = buttons[1].getText();
 		String b3 = buttons[2].getText();
@@ -102,7 +105,7 @@ public class TicTacGUI extends JFrame {
 			reset();
 		}
 	}
-
+// disposes of the old GUI after game is over, begins a new game
 	private void reset() {
 		dispose();
 		new TicTacGUI();
